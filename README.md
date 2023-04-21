@@ -1,4 +1,4 @@
-# CGS-Internship-NTLK-Sentiment-Analysis
+# CGS-Internship-NLTK-Sentiment-Analysis
 Sentiment Analysis using NLTK for my CGS Internship 2023 for a student researcher (More details in README)
 
 Download NLTK using 'pip install nltk' 
