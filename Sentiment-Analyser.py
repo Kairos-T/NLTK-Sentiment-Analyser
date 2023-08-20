@@ -2,12 +2,16 @@ import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import csv
 import argparse
+import logging
 
 # Download the VADER lexicon for sentiment analysis
 nltk.download('vader_lexicon')
 
 # Create a SentimentIntensityAnalyzer instance
 sia = SentimentIntensityAnalyzer()
+
+# Set up logging configuration
+logging.basicConfig(filename='sentiment_analysis.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def analyze_sentiment(input_filename, output_filename):
     try:
@@ -62,9 +66,11 @@ def analyze_sentiment(input_filename, output_filename):
         print("Sentiment scores written to", output_filename)
 
     except FileNotFoundError:
-        print("Error: Input file '{}' not found.".format(input_filename))
+        logging.error("Input file '%s' not found.", input_filename)
+        print("Failed to run. An error occurred. Check the log for details.")
     except Exception as e:
-        print("An error occurred:", e)
+        logging.error("An error occurred: %s", e)
+        print("Failed to run. An error occurred. Check the log for details.")
 
 if __name__ == "__main__":
     # Create an argument parser with a description for the help message

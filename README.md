@@ -22,7 +22,7 @@ The script reads input data from a text file, analyses the sentiment of each tex
 
 ```bash
 git clone https://github.com/Kairos-T/NLTK-Sentiment-Analyser/tree/main
-cd your-repo
+cd NLTK-Sentiment-Analyser
 ```
 
 2. Install the dependencies:
@@ -47,16 +47,16 @@ output_file: Path to the output CSV file where sentiment scores and labels will 
 ## Output
 The script will generate a CSV file containing the sentiment analysis results for each input text. The CSV file will have the following columns:
 
-Text: The input text.
-Positive: The positive sentiment score.
-Neutral: The neutral sentiment score.
-Negative: The negative sentiment score.
-Compound: The compound sentiment score.
-Sentiment Label: The label indicating the overall sentiment.
+- Text: The input text.
+- Positive: The positive sentiment score.
+- Neutral: The neutral sentiment score.
+- Negative: The negative sentiment score.
+- Compound: The compound sentiment score.
+- Sentiment Label: The label indicating the overall sentiment.
 
 ## Dependencies
-Python 3.x
-NLTK
+- Python 3.x
+- NLTK
 
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
