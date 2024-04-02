@@ -8,8 +8,6 @@ This is a Python script that analyses sentiment in text data using the VADER (Va
 - [Installation](#installation)
 - [Usage](#usage)
 - [Output](#output)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
 
 ## Description
 
@@ -48,7 +46,3 @@ The script will generate a CSV file containing the sentiment analysis results fo
 - Negative: The negative sentiment score.
 - Compound: The compound sentiment score.
 - Sentiment Label: The label indicating the overall sentiment.
-
-## Dependencies
-- Python 3.x
-- NLTK
