@@ -7,7 +7,6 @@ This is a Python script that analyses sentiment in text data using the VADER (Va
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Command Line Arguments](#command-line-arguments)
 - [Output](#output)
 - [Dependencies](#dependencies)
 - [Contributing](#contributing)
@@ -39,10 +38,6 @@ Run the script with the following command:
 python main.py input_data.txt sentiment_scores.csv
 ```
 Replace `input_data.txt` with the name of the input data file, and `sentiment_scores.csv` with the desired name of the output CSV file.
-
-### Command Line Arguments
-input_file: Path to the input text file containing the data for sentiment analysis.
-output_file: Path to the output CSV file where sentiment scores and labels will be saved.
 
 ## Output
 The script will generate a CSV file containing the sentiment analysis results for each input text. The CSV file will have the following columns:
