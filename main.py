@@ -11,20 +11,24 @@ sia = SentimentIntensityAnalyzer()
 
 logging.basicConfig(filename='sentiment_analysis.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def analyze_sentiment(input_filename, output_filename):
+def analyse_sentiment(input_filename, output_filename):
+    """
+    analyse sentiment of input data and output scores to a CSV file.
+    
+    Args:
+        input_filename (str): Path to the input text file.
+        output_filename (str): Path to the output CSV file.
+    """
     try:
-        with open(input_filename, 'r') as input_file:
-            student_data = input_file.readlines()
-
-        with open(output_filename, 'w', newline='') as output_file:
+        with open(input_filename, 'r') as input_file, open(output_filename, 'w', newline='') as output_file:
             csv_writer = csv.writer(output_file)
             csv_writer.writerow(['Text', 'Positive', 'Neutral', 'Negative', 'Compound', 'Sentiment Label'])
             
             total_pos = total_neu = total_neg = total_compound = 0
             total_entries = 0
 
-            for data in student_data:
-                data = data.strip().strip('"').rstrip(',')  
+            for line in input_file:
+                data = line.strip().strip('"').rstrip(',')  
                 if data:
                     sentiment_scores = sia.polarity_scores(data)
                     sentiment_label = get_sentiment_label(sentiment_scores['compound'])
@@ -53,6 +57,7 @@ def analyze_sentiment(input_filename, output_filename):
 
             csv_writer.writerow(['Aggregated Scores', format(avg_pos, '.3f'), format(avg_neu, '.3f'), format(avg_neg, '.3f'), format(avg_compound, '.3f'), ''])
             
+        logging.info("Sentiment scores written to %s", output_filename)
         print("Sentiment scores written to", output_filename)
 
     except FileNotFoundError:
@@ -63,6 +68,15 @@ def analyze_sentiment(input_filename, output_filename):
         print("Failed to run. An error occurred. Check the log for details.")
 
 def get_sentiment_label(compound_score):
+    """
+    Determine sentiment label based on compound score.
+    
+    Args:
+        compound_score (float): The compound score.
+        
+    Returns:
+        str: Sentiment label ('Positive', 'Neutral', 'Negative').
+    """
     if compound_score >= 0.05:
         return 'Positive'
     elif compound_score <= -0.05:
@@ -71,11 +85,11 @@ def get_sentiment_label(compound_score):
         return 'Neutral'
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Analyze sentiment of input data and output scores to a CSV file.")
+    parser = argparse.ArgumentParser(description="analyse sentiment of input data and output scores to a CSV file.")
     
     parser.add_argument("input_file", help="Path to the input text file")
     parser.add_argument("output_file", help="Path to the output CSV file")
 
     args = parser.parse_args()
     
-    analyze_sentiment(args.input_file, args.output_file)
+    analyse_sentiment(args.input_file, args.output_file)
