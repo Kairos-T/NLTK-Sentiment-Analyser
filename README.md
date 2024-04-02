@@ -36,9 +36,9 @@ pip install -r requirements.txt
 Run the script with the following command:
 
 ```bash
-python sentiment_analysis.py input_data.txt sentiment_scores.csv
+python main.py input_data.txt sentiment_scores.csv
 ```
-Replace `sentiment_analysis.py` with the name of your script, `input_data.txt` with the path to your input data file, and `sentiment_scores.csv` with the desired name of the output CSV file.
+Replace `input_data.txt` with the name of the input data file, and `sentiment_scores.csv` with the desired name of the output CSV file.
 
 ### Command Line Arguments
 input_file: Path to the input text file containing the data for sentiment analysis.
@@ -57,6 +57,3 @@ The script will generate a CSV file containing the sentiment analysis results fo
 ## Dependencies
 - Python 3.x
 - NLTK
-
-## Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
